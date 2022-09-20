@@ -1,6 +1,9 @@
-import inspect
-from importlib.metadata import version
+
 from pyzinga import __version__
+from pyzinga import Board
+from pyzinga.game_string import GameString
+from pyzinga.game_type import GameType
+
 
 class Engine:
     def __init__(self):
@@ -31,7 +34,17 @@ class Engine:
             case "info":
                 self.output_command(self.info())
             case "newgame":
-                pass
+                if len(split_cmd) == 2:
+                    new_game_params = split_cmd[1]
+                    if GameType.is_valid(new_game_params):
+                        board = Board.from_game_type_string(new_game_params)
+                    elif GameString.is_valid(new_game_params):
+                        board = Board.from_game_string(new_game_params)
+                else:
+                    board = Board()
+
+                self.board = board
+                self.output_command(self.board)
             case "play":
                 pass
             case "pass":
