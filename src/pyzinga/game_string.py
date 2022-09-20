@@ -16,4 +16,4 @@ class GameString:
         pass
 
     def __str__(self):
-        pass
+        f"{self.type};{self.state};{self.state}"
