@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+
+
 @dataclass
 class GameType:
     ladybug: bool = False
@@ -15,4 +17,11 @@ class GameType:
         if self.pillbug:
             expansion_str += "P"
         return "Base" + f"+{expansion_str}" if expansion_str else ""
+
+    @classmethod
+    def is_valid(cls, gts: str) -> bool:
+        pass
+
+
+
 
