@@ -1,18 +1,17 @@
 import inspect
 from importlib.metadata import version
-
+from pyzinga import __version__
 
 class Engine:
     def __init__(self):
         pass
 
     def __repr__(self):
-        s = inspect.stack()
-        return f"id {__name__} v{version('pyzinga')}"
+        return f"id {__name__} v{__version__}"
+
 
     def info(self):
         return self.__repr__()
-
 
 
     def output_command(self, txt: str):
