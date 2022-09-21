@@ -13,7 +13,11 @@ class GameString:
 
     @classmethod
     def is_valid(cls, gs: str) -> bool:
-        pass
+        game_type, game_state, game_turn = gs.split(";")
+        return GameType.is_valid(game_type) and \
+               GameState.is_valid(game_state) and \
+               GameTurn.is_valid(game_turn)
+
 
     def __str__(self):
         f"{self.type};{self.state};{self.state}"

@@ -1,3 +1,4 @@
+import re
 from dataclasses import dataclass
 
 
@@ -20,8 +21,11 @@ class GameType:
 
     @classmethod
     def is_valid(cls, gts: str) -> bool:
-        pass
+        return re.match("^(Base)(\+(M|L|P|ML|MP|LP|MLP))?$", gts) is not None
 
+
+if __name__ == '__main__':
+    print(GameType.is_valid("Base"))
 
 
 
